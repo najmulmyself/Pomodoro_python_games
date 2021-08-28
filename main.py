@@ -18,5 +18,18 @@ segment_3 = Turtle("square")
 segment_3.color("white")
 segment_3.goto(-40 , 0)
 
+#if we dont want repeated code we can use it by declaring a loop
+
+#let's declare a tuple for diffrent position
+
+# starting_position = [(0, 0) , (-20 , 0) , (-40 , 0) ,]
+
+# for position in starting_position:
+#     new_segment = Turtle("square")
+#     new_segment.color("white")
+#     new_segment.goto(position)
+
+#this 3 lines of code will generate the same gui
+
 
 screen.exitonclick()
