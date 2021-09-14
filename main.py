@@ -1,35 +1,42 @@
-from turtle import Screen , Turtle
 
-screen = Screen()
-screen.setup(width=600 , height=600)
-screen.bgcolor("black")
-screen.title("Snake | Score Yours")
+# ---------------------------- CONSTANTS ------------------------------- #
+PINK = "#e2979c"
+RED = "#e7305b"
+GREEN = "#9bdeac"
+YELLOW = "#f7f5dd"
+FONT_NAME = "Courier"
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 20
 
-segment_1 = Turtle("square")
-# we can set shape = "square"
-segment_1.color("white")
+# ---------------------------- TIMER RESET ------------------------------- # 
 
-segment_2 = Turtle("square")
-segment_2.color("white")
-segment_2.goto(-20,0)
-# it simply takes goto (x , y)
+# ---------------------------- TIMER MECHANISM ------------------------------- # 
 
-segment_3 = Turtle("square")
-segment_3.color("white")
-segment_3.goto(-40 , 0)
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
-#if we dont want repeated code we can use it by declaring a loop
+# ---------------------------- UI SETUP ------------------------------- #
 
-#let's declare a tuple for diffrent position
+from tkinter import * 
 
-# starting_position = [(0, 0) , (-20 , 0) , (-40 , 0) ,]
+window = Tk()
+window.title("Promodoro")
+window.config(padx=100 , pady=50 , bg=YELLOW )
+# when we change the background color of the window it shows a problem of images background
+#need to change image background 
 
-# for position in starting_position:
-#     new_segment = Turtle("square")
-#     new_segment.color("white")
-#     new_segment.goto(position)
+canvas = Canvas(width=200, height=224 , bg=YELLOW , highlightthickness= 0)
+#When we change the image background another problem aries that image has a border and its white .
+#but there is not such good thing to remove the border exepct highlightthickness = 0
+#We set height and width according to the image we have selected | it has 200 * 224
+#We nedd to set an Image to the background | for this it as built in mehod PhotoImage we need to use
 
-#this 3 lines of code will generate the same gui
+tomato_img = PhotoImage(file = "tomato.png")
+canvas.create_image(100, 112, image=tomato_img)
+# cordination selected bcz we exactly want img to be centered
+canvas.create_text(110 , 130, text="00:00" , fill="white" , font=(FONT_NAME , 35 , "bold"))
+canvas.pack()
 
 
-screen.exitonclick()
+
+window.mainloop()
