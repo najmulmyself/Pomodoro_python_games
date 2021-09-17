@@ -9,18 +9,38 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+global reps
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
-    countdown(5 * 60)
+    global reps
+    # reps += 1
+
+
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    
+    if reps % 8 == 0:
+        countdown(short_break_sec)
+    elif reps % 2 == 0:
+        countdown(long_break_sec)
+    else:
+        countdown(work_sec)
+
+    # countdown(5 * 60)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 
 def countdown(count):
     count_min = math.floor(count / 60)
     count_sec = count % 60
+    if count_sec < 10:
+        count_sec = f"0{count_sec}" # This is Dynamic Variable Concept in Python 
+        # changing a variable type from int to str
 
     canvas.itemconfig(timer_text , text=f"{count_min}:{count_sec}")
     if count > 0:
